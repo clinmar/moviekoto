@@ -12,7 +12,54 @@
   <meta name="monetag" content="46beba7ca33913fcf2f4e47361979c14">
   <script src="https://fpyf8.com/88/tag.min.js" data-zone="148881" async data-cfasync="false"></script>
 </head>
+<style>
+  .popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
 
+.popup-content {
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+.popup-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 24px;
+  cursor: pointer;
+  color: red;
+}
+
+.watch-now-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.watch-now-btn:hover {
+  background-color: #b00610;
+}
+
+</style>
 <body>
   <div class="navbar">
 <!--     <img src="logo.png" alt="LOGO HERE" /> -->
@@ -81,6 +128,35 @@
     </div>
   </div>
 </footer>
+<div id="watch-now-popup" class="popup">
+  <div class="popup-content">
+    <span class="popup-close" onclick="closePopup()">&times;</span>
+    <h2>Ready to watch?</h2>
+    <p>Click below to start streaming!</p>
+    <button onclick="watchNow()" class="watch-now-btn">Watch Now</button>
+  </div>
+</div>
 
   
 </body>
+  <script>
+    function showPopup() {
+  document.getElementById('watch-now-popup').style.display = 'flex';
+}
+
+function closePopup() {
+  document.getElementById('watch-now-popup').style.display = 'none';
+}
+
+function watchNow() {
+  closePopup();
+  // Redirect or scroll to a video or section
+  document.getElementById("banner").scrollIntoView({ behavior: "smooth" });
+}
+
+// Optional: Show popup after a few seconds
+window.addEventListener('load', () => {
+  setTimeout(showPopup, 3000); // show after 3 seconds
+});
+
+  </script>
